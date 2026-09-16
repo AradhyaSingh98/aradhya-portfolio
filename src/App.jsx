@@ -503,22 +503,24 @@ function App() {
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
+            {/* Gmail */}
             <a
-              href="singharadhya12098@gmail.com"
+              href="mailto:singharadhya12098@gmail.com"
               className="rounded-lg bg-cyan-400 px-6 py-3 font-semibold text-slate-950 transition hover:bg-cyan-300"
             >
               Email Me
             </a>
+            {/* GitHub */}
 
             <a
-              href="github.com/AradhyaSingh98"
+              href="https://github.com/AradhyaSingh98"
               className="rounded-lg border border-slate-700 px-6 py-3 font-semibold transition hover:border-cyan-400 hover:text-cyan-400"
             >
               GitHub
             </a>
-
+            {/* LinkedIn */}
             <a
-              href="linkedin.com/in/aradhya-singh-3a6653322"
+              href="https://www.linkedin.com/in/aradhya-singh-3a6653322/"
               className="rounded-lg border border-slate-700 px-6 py-3 font-semibold transition hover:border-cyan-400 hover:text-cyan-400"
             >
               LinkedIn
