@@ -511,7 +511,7 @@ function App() {
 
         try {
           const response = await fetch(
-            "http://localhost:5000/api/messages",
+            "https://aradhya-portfolio-b2qa.onrender.com/api/messages", 
             {
               method: "POST",
               headers: {
