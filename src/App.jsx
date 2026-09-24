@@ -481,55 +481,134 @@ function App() {
           </div>
         </div>
       </section>
+      ```jsx
+{/* Contact */}
+<section
+  id="contact"
+  className="border-t border-white/5 px-6 py-24"
+>
+  <div className="mx-auto max-w-4xl text-center">
+    <p className="font-mono text-sm text-cyan-400">
+      07 — CONTACT
+    </p>
 
-      {/* Contact */}
-      <section
-        id="contact"
-        className="border-t border-white/5 px-6 py-24"
+    <h2 className="mt-4 text-4xl font-bold sm:text-5xl">
+      Let's build something
+      <span className="text-cyan-400"> great.</span>
+    </h2>
+
+    <p className="mx-auto mt-5 max-w-xl text-slate-400">
+      I'm open to full-stack development opportunities, Machine
+      Learning opportunities, internships and interesting projects.
+    </p>
+
+    {/* Contact Form */}
+    <form
+      onSubmit={async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+
+        try {
+          const response = await fetch(
+            "http://localhost:5000/api/messages",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                name: formData.get("name"),
+                email: formData.get("email"),
+                message: formData.get("message"),
+              }),
+            }
+          );
+
+          const data = await response.json();
+
+          if (data.success) {
+            alert("Message sent successfully!");
+            e.target.reset();
+          } else {
+            alert(data.message || "Something went wrong.");
+          }
+        } catch (error) {
+          console.error("Contact form error:", error);
+          alert("Unable to send message. Please try again.");
+        }
+      }}
+      className="mx-auto mt-10 max-w-2xl space-y-5 text-left"
+    >
+      {/* Name */}
+      <input
+        name="name"
+        type="text"
+        placeholder="Your Name"
+        required
+        className="w-full rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-4 text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400"
+      />
+
+      {/* Email */}
+      <input
+        name="email"
+        type="email"
+        placeholder="Your Email"
+        required
+        className="w-full rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-4 text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400"
+      />
+
+      {/* Message */}
+      <textarea
+        name="message"
+        placeholder="Your Message"
+        rows="5"
+        required
+        className="w-full resize-none rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-4 text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400"
+      />
+
+      {/* Send Button */}
+      <button
+        type="submit"
+        className="w-full rounded-xl bg-cyan-400 px-6 py-4 font-semibold text-slate-950 transition hover:bg-cyan-300"
       >
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="font-mono text-sm text-cyan-400">
-            07 — CONTACT
-          </p>
+        Send Message
+      </button>
+    </form>
 
-          <h2 className="mt-4 text-4xl font-bold sm:text-5xl">
-            Let's build something
-            <span className="text-cyan-400"> great.</span>
-          </h2>
+    {/* Social Links */}
+    <div className="mt-8 flex flex-wrap justify-center gap-4">
+      {/* Gmail */}
+      <a
+        href="mailto:singharadhya12098@gmail.com"
+        className="rounded-lg border border-slate-700 px-6 py-3 font-semibold transition hover:border-cyan-400 hover:text-cyan-400"
+      >
+        Email Me
+      </a>
 
-          <p className="mx-auto mt-5 max-w-xl text-slate-400">
-            I'm open to full-stack development opportunities, Machine
-            Learning opportunities, internships and interesting projects.
-          </p>
+      {/* GitHub */}
+      <a
+        href="https://github.com/AradhyaSingh98"
+        target="_blank"
+        rel="noreferrer"
+        className="rounded-lg border border-slate-700 px-6 py-3 font-semibold transition hover:border-cyan-400 hover:text-cyan-400"
+      >
+        GitHub
+      </a>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            {/* Gmail */}
-            <a
-              href="mailto:singharadhya12098@gmail.com"
-              className="rounded-lg bg-cyan-400 px-6 py-3 font-semibold text-slate-950 transition hover:bg-cyan-300"
-            >
-              Email Me
-            </a>
-            {/* GitHub */}
-
-            <a
-              href="https://github.com/AradhyaSingh98"
-              className="rounded-lg border border-slate-700 px-6 py-3 font-semibold transition hover:border-cyan-400 hover:text-cyan-400"
-            >
-              GitHub
-            </a>
-            {/* LinkedIn */}
-            <a
-              href="https://www.linkedin.com/in/aradhya-singh-3a6653322/"
-              className="rounded-lg border border-slate-700 px-6 py-3 font-semibold transition hover:border-cyan-400 hover:text-cyan-400"
-            >
-              LinkedIn
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
+      {/* LinkedIn */}
+      <a
+        href="https://www.linkedin.com/in/aradhya-singh-3a6653322/"
+        target="_blank"
+        rel="noreferrer"
+        className="rounded-lg border border-slate-700 px-6 py-3 font-semibold transition hover:border-cyan-400 hover:text-cyan-400"
+      >
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+{/* Footer */}
       <footer className="border-t border-white/5 px-6 py-8">
         <div className="mx-auto flex max-w-6xl flex-col justify-between gap-4 text-sm text-slate-500 sm:flex-row">
           <p>
